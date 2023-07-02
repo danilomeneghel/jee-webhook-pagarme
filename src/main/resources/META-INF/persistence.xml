@@ -5,7 +5,8 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
 
-	<persistence-unit name="mysql-pu" transaction-type="JTA">
+	<persistence-unit name="mysql-pu">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
        	<jta-data-source>java:/jboss/jdbc/MySqlDS</jta-data-source>
         
     	<class>webhook.entity.AddressEntity</class>
@@ -24,15 +25,8 @@
         <class>webhook.entity.PhonesEntity</class>
         
         <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="none"/>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/webhook?useSSL=false&amp;serverTimezone=UTC"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="secret"/>
-
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
