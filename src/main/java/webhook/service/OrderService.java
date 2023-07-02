@@ -16,7 +16,7 @@ import webhook.model.OrderModel;
 @Transactional
 public class OrderService {
 
-	@PersistenceContext(name = "MySqlDS")
+	@PersistenceContext(unitName = "mysql-pu")
 	private EntityManager entityManager;
 
 	private ModelMapper modelMapper = new ModelMapper();
