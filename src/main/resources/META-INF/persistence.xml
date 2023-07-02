@@ -5,9 +5,8 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
 
-	<persistence-unit name="MySqlUT" transaction-type="JTA">
-       	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-       	<jta-data-source>java:jboss/datasources/MySqlDS</jta-data-source>
+	<persistence-unit name="mysql-pu" transaction-type="JTA">
+       	<jta-data-source>java:/jboss/jdbc/MySqlDS</jta-data-source>
         
     	<class>webhook.entity.AddressEntity</class>
         <class>webhook.entity.AntifraudResponseEntity</class>

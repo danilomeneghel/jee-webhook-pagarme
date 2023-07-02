@@ -16,7 +16,7 @@ import webhook.model.CustomerModel;
 @Stateless
 public class CustomerService {
 
-	@PersistenceContext(unitName = "MySqlUT")
+	@PersistenceContext(unitName = "mysql-pu")
 	private EntityManager entityManager;
 
 	private ModelMapper modelMapper = new ModelMapper();
