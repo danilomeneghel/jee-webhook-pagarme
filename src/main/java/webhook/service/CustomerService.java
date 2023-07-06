@@ -16,7 +16,7 @@ import webhook.model.CustomerModel;
 @Stateless
 public class CustomerService {
 
-	@PersistenceContext(unitName = "mysql-pu")
+	@PersistenceContext(unitName = "OraclePU")
 	private EntityManager entityManager;
 
 	private ModelMapper modelMapper = new ModelMapper();
