@@ -1,5 +1,6 @@
 package webhook.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Embedded;
@@ -10,8 +11,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "card", schema = "DUMMY")
-public class CardEntity {
+public class CardEntity implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private String card_id;
 
@@ -25,11 +28,11 @@ public class CardEntity {
 
 	private String holder_document;
 
-	private int exp_month;
+	private Integer exp_month;
 
-	private int exp_year;
+	private Integer exp_year;
 
-	private String status;
+	private String card_status;
 
 	private String type;
 
@@ -45,11 +48,11 @@ public class CardEntity {
 	@Embedded
 	private BillingAddressEntity billingAddress;
 
-	public String getId() {
+	public String getCard_id() {
 		return card_id;
 	}
 
-	public void setId(String card_id) {
+	public void setCard_id(String card_id) {
 		this.card_id = card_id;
 	}
 
@@ -93,28 +96,28 @@ public class CardEntity {
 		this.holder_document = holder_document;
 	}
 
-	public int getExp_month() {
+	public Integer getExp_month() {
 		return exp_month;
 	}
 
-	public void setExp_month(int exp_month) {
+	public void setExp_month(Integer exp_month) {
 		this.exp_month = exp_month;
 	}
 
-	public int getExp_year() {
+	public Integer getExp_year() {
 		return exp_year;
 	}
 
-	public void setExp_year(int exp_year) {
+	public void setExp_year(Integer exp_year) {
 		this.exp_year = exp_year;
 	}
-
-	public String getStatus() {
-		return status;
+	
+	public String getCard_status() {
+		return card_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setCard_status(String card_status) {
+		this.card_status = card_status;
 	}
 
 	public String getType() {
@@ -170,7 +173,7 @@ public class CardEntity {
 	}
 
 	public CardEntity(String card_id, String first_six_digits, String last_four_digits, String brand, String holder_name,
-			String holder_document, int exp_month, int exp_year, String status, String type, String label,
+			String holder_document, Integer exp_month, Integer exp_year, String card_status, String type, String label,
 			Date created_at, Date updated_at, LastTransactionEntity last_transaction,
 			BillingAddressEntity billingAddress) {
 		super();
@@ -182,7 +185,7 @@ public class CardEntity {
 		this.holder_document = holder_document;
 		this.exp_month = exp_month;
 		this.exp_year = exp_year;
-		this.status = status;
+		this.card_status = card_status;
 		this.type = type;
 		this.label = label;
 		this.created_at = created_at;
