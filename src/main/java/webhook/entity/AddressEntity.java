@@ -9,13 +9,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "address")
+@Table(name = "address_customer", schema = "DUMMY")
 public class AddressEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
+	private String address_id;
 
 	private String line_1;
 
@@ -35,15 +35,15 @@ public class AddressEntity implements Serializable {
 
 	private Date updated_at;
 
-	@OneToOne(mappedBy = "address")
+	@OneToOne(mappedBy = "address_customer")
 	private CustomerEntity customer;
 
-	public String getId() {
-		return id;
+	public String getAddress_id() {
+		return address_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setAddress_id(String address_id) {
+		this.address_id = address_id;
 	}
 
 	public String getLine_1() {
@@ -129,10 +129,10 @@ public class AddressEntity implements Serializable {
 	public AddressEntity() {
 	}
 
-	public AddressEntity(String id, String line_1, String line_2, String zip_code, String city, String state,
+	public AddressEntity(String address_id, String line_1, String line_2, String zip_code, String city, String state,
 			String country, String status, Date created_at, Date updated_at, CustomerEntity customer) {
 		super();
-		this.id = id;
+		this.address_id = address_id;
 		this.line_1 = line_1;
 		this.line_2 = line_2;
 		this.zip_code = zip_code;

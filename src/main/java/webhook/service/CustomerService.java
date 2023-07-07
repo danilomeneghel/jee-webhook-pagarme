@@ -16,7 +16,7 @@ import webhook.model.CustomerModel;
 @Stateless
 public class CustomerService {
 
-	@PersistenceContext(unitName = "OraclePU")
+	@PersistenceContext(unitName = "Oracle19DS")
 	private EntityManager entityManager;
 
 	private ModelMapper modelMapper = new ModelMapper();

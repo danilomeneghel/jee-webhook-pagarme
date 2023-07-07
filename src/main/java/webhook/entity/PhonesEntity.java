@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "phones")
+@Table(name = "phones", schema = "DUMMY")
 public class PhonesEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class PhonesEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phones_sequence")
     @SequenceGenerator(name = "phones_sequence", sequenceName = "PHONES_SEQ", allocationSize = 1)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id_phones", unique = true, nullable = false)
     private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL)

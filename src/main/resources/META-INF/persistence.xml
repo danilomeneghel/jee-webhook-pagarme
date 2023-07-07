@@ -4,14 +4,24 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="OraclePU" transaction-type="JTA">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:/jboss/jdbc/Oracle19DS</jta-data-source>
+    <persistence-unit name="Oracle19DS" transaction-type="JTA">
+    	<jta-data-source>java:/jboss/jdbc/Oracle19DS</jta-data-source>
+    	<class>webhook.entity.AddressEntity</class>
+        <class>webhook.entity.AntifraudResponseEntity</class>
+        <class>webhook.entity.BillingAddressEntity</class>
+        <class>webhook.entity.CardEntity</class>
+        <class>webhook.entity.ChargeEntity</class>
+        <class>webhook.entity.CheckoutEntity</class>
+        <class>webhook.entity.CustomerEntity</class>
+        <class>webhook.entity.GatewayResponseEntity</class>
+        <class>webhook.entity.HomePhoneEntity</class>
+        <class>webhook.entity.ItemEntity</class>
+        <class>webhook.entity.LastTransactionEntity</class>
+        <class>webhook.entity.MobilePhoneEntity</class>
+        <class>webhook.entity.OrderEntity</class>
+        <class>webhook.entity.PhonesEntity</class>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
+        	<property name="javax.persistence.schema-generation.database.action" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>

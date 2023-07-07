@@ -11,11 +11,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "charge")
+@Table(name = "charge", schema = "DUMMY")
 public class ChargeEntity {
 
 	@Id
-	private String id;
+	private String charge_id;
 
 	private String code;
 
@@ -50,11 +50,11 @@ public class ChargeEntity {
 	private OrderEntity order;
 
 	public String getId() {
-		return id;
+		return charge_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String charge_id) {
+		this.charge_id = charge_id;
 	}
 
 	public String getCode() {
@@ -165,11 +165,11 @@ public class ChargeEntity {
 		super();
 	}
 
-	public ChargeEntity(String id, String code, String gateway_id, double amount, double paid_amount, String status,
+	public ChargeEntity(String charge_id, String code, String gateway_id, double amount, double paid_amount, String status,
 			String currency, String payment_method, Date paid_at, Date created_at, Date updated_at,
 			CustomerEntity customer, LastTransactionEntity last_transaction, OrderEntity order) {
 		super();
-		this.id = id;
+		this.charge_id = charge_id;
 		this.code = code;
 		this.gateway_id = gateway_id;
 		this.amount = amount;

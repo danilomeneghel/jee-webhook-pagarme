@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customer", schema = "DUMMY")
 public class CustomerEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -37,7 +37,7 @@ public class CustomerEntity implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
-	private AddressEntity address;
+	private AddressEntity address_customer;
 
 	private Date created_at;
 
@@ -122,11 +122,11 @@ public class CustomerEntity implements Serializable {
 	}
 
 	public AddressEntity getAddress() {
-		return address;
+		return address_customer;
 	}
 
 	public void setAddress(AddressEntity address) {
-		this.address = address;
+		this.address_customer = address;
 	}
 
 	public Date getCreated_at() {
@@ -166,7 +166,7 @@ public class CustomerEntity implements Serializable {
 	}
 
 	public CustomerEntity(String id, String name, String email, String code, String document, String document_type,
-			String type, String gender, boolean delinquent, AddressEntity address, Date created_at, Date updated_at,
+			String type, String gender, boolean delinquent, AddressEntity address_customer, Date created_at, Date updated_at,
 			Date birthdate, PhonesEntity phones) {
 		super();
 		this.id = id;
@@ -178,7 +178,7 @@ public class CustomerEntity implements Serializable {
 		this.type = type;
 		this.gender = gender;
 		this.delinquent = delinquent;
-		this.address = address;
+		this.address_customer = address_customer;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 		this.birthdate = birthdate;

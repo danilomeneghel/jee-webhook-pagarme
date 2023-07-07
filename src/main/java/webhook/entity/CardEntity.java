@@ -9,11 +9,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "card")
+@Table(name = "card", schema = "DUMMY")
 public class CardEntity {
 
 	@Id
-	private String id;
+	private String card_id;
 
 	private String first_six_digits;
 
@@ -46,11 +46,11 @@ public class CardEntity {
 	private BillingAddressEntity billingAddress;
 
 	public String getId() {
-		return id;
+		return card_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String card_id) {
+		this.card_id = card_id;
 	}
 
 	public String getFirst_six_digits() {
@@ -169,12 +169,12 @@ public class CardEntity {
 		super();
 	}
 
-	public CardEntity(String id, String first_six_digits, String last_four_digits, String brand, String holder_name,
+	public CardEntity(String card_id, String first_six_digits, String last_four_digits, String brand, String holder_name,
 			String holder_document, int exp_month, int exp_year, String status, String type, String label,
 			Date created_at, Date updated_at, LastTransactionEntity last_transaction,
 			BillingAddressEntity billingAddress) {
 		super();
-		this.id = id;
+		this.card_id = card_id;
 		this.first_six_digits = first_six_digits;
 		this.last_four_digits = last_four_digits;
 		this.brand = brand;
