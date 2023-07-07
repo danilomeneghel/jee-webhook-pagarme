@@ -2,6 +2,7 @@ package webhook.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,34 +14,43 @@ import javax.persistence.Table;
 public class ItemEntity {
 
 	@Id
-	private String id;
+	@Column(name = "item_id")
+	private String item_id;
 
+	@Column(name = "type")
 	private String type;
 
+	@Column(name = "description")
 	private String description;
 
+	@Column(name = "amount")
 	private double amount;
 
+	@Column(name = "quantity")
 	private int quantity;
 
+	@Column(name = "status")
 	private String status;
 
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
 
+	@Column(name = "code")
 	private String code;
 
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private OrderEntity order;
 
-	public String getId() {
-		return id;
+	public String getItem_id() {
+		return item_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setItem_id(String item_id) {
+		this.item_id = item_id;
 	}
 
 	public String getType() {
@@ -119,10 +129,10 @@ public class ItemEntity {
 		super();
 	}
 
-	public ItemEntity(String id, String type, String description, double amount, int quantity, String status,
+	public ItemEntity(String item_id, String type, String description, double amount, int quantity, String status,
 			Date created_at, Date updated_at, String code, OrderEntity order) {
 		super();
-		this.id = id;
+		this.item_id = item_id;
 		this.type = type;
 		this.description = description;
 		this.amount = amount;

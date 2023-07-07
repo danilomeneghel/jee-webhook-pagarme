@@ -19,8 +19,8 @@ public class MobilePhoneEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mobile_phone_sequence")
     @SequenceGenerator(name = "mobile_phone_sequence", sequenceName = "MOBILE_PHONE_SEQ", allocationSize = 1)
-    @Column(name = "id_mobile_phone", unique = true, nullable = false)
-    private Long id;
+    @Column(name = "mobile_phone_id", unique = true, nullable = false)
+    private Long mobile_phone_id;
 
 	@Column(name = "country_code")
 	private String country_code;
@@ -31,12 +31,12 @@ public class MobilePhoneEntity implements Serializable {
 	@Column(name = "area_code")
 	private String area_code;
 
-	public Long getId() {
-		return id;
+	public Long getMobile_phone_id() {
+		return mobile_phone_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMobile_phone_id(Long mobile_phone_id) {
+		this.mobile_phone_id = mobile_phone_id;
 	}
 
 	public String getCountry_code() {
@@ -63,13 +63,17 @@ public class MobilePhoneEntity implements Serializable {
 		this.area_code = area_code;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public MobilePhoneEntity() {
 		super();
 	}
 
-	public MobilePhoneEntity(Long id, String country_code, String number, String area_code) {
+	public MobilePhoneEntity(Long mobile_phone_id, String country_code, String number, String area_code) {
 		super();
-		this.id = id;
+		this.mobile_phone_id = mobile_phone_id;
 		this.country_code = country_code;
 		this.number = number;
 		this.area_code = area_code;

@@ -1,10 +1,13 @@
 package webhook.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AddressModel {
+public class AddressModel implements Serializable {
 
-	private String id;
+	private static final long serialVersionUID = 1L;
+
+	private String address_id;
 
 	private String line_1;
 
@@ -26,12 +29,12 @@ public class AddressModel {
 
 	private CustomerModel customer;
 
-	public String getId() {
-		return id;
+	public String getAddress_id() {
+		return address_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setAddress_id(String address_id) {
+		this.address_id = address_id;
 	}
 
 	public String getLine_1() {
@@ -115,13 +118,12 @@ public class AddressModel {
 	}
 
 	public AddressModel() {
-		super();
 	}
 
-	public AddressModel(String id, String line_1, String line_2, String zip_code, String city, String state,
+	public AddressModel(String address_id, String line_1, String line_2, String zip_code, String city, String state,
 			String country, String status, Date created_at, Date updated_at, CustomerModel customer) {
 		super();
-		this.id = id;
+		this.address_id = address_id;
 		this.line_1 = line_1;
 		this.line_2 = line_2;
 		this.zip_code = zip_code;

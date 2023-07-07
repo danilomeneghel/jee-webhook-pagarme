@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,14 +17,19 @@ import javax.persistence.Table;
 public class OrderEntity {
 
 	@Id
-	private String id;
+	@Column(name = "order_id")
+	private String order_id;
 
+	@Column(name = "code")
 	private String code;
 
+	@Column(name = "amount")
 	private double amount;
 
+	@Column(name = "currency")
 	private String currency;
 
+	@Column(name = "closed")
 	private boolean closed;
 
 	@OneToMany(cascade = CascadeType.ALL)
@@ -34,12 +40,16 @@ public class OrderEntity {
 	@JoinColumn(name = "customer_id")
 	private CustomerEntity customer;
 
+	@Column(name = "status")
 	private String status;
 
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
 
+	@Column(name = "closed_at")
 	private Date closed_at;
 
 	@OneToMany(cascade = CascadeType.ALL)
@@ -50,12 +60,12 @@ public class OrderEntity {
 	@JoinColumn(name = "order_id")
 	private List<CheckoutEntity> checkouts;
 
-	public String getId() {
-		return id;
+	public String getOrder_id() {
+		return order_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
 	}
 
 	public String getCode() {
@@ -158,11 +168,11 @@ public class OrderEntity {
 		super();
 	}
 
-	public OrderEntity(String id, String code, double amount, String currency, boolean closed, List<ItemEntity> items,
-			CustomerEntity customer, String status, Date created_at, Date updated_at, Date closed_at,
-			List<ChargeEntity> charges, List<CheckoutEntity> checkouts) {
+	public OrderEntity(String order_id, String code, double amount, String currency, boolean closed,
+			List<ItemEntity> items, CustomerEntity customer, String status, Date created_at, Date updated_at,
+			Date closed_at, List<ChargeEntity> charges, List<CheckoutEntity> checkouts) {
 		super();
-		this.id = id;
+		this.order_id = order_id;
 		this.code = code;
 		this.amount = amount;
 		this.currency = currency;

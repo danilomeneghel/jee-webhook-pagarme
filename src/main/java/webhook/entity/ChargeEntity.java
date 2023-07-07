@@ -3,6 +3,7 @@ package webhook.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,26 +16,37 @@ import javax.persistence.Table;
 public class ChargeEntity {
 
 	@Id
+	@Column(name = "charge_id")
 	private String charge_id;
 
+	@Column(name = "code")
 	private String code;
 
+	@Column(name = "gateway_id")
 	private String gateway_id;
 
+	@Column(name = "amount")
 	private double amount;
 
+	@Column(name = "paid_amount")
 	private double paid_amount;
 
+	@Column(name = "status")
 	private String status;
 
+	@Column(name = "currency")
 	private String currency;
 
+	@Column(name = "payment_method")
 	private String payment_method;
 
+	@Column(name = "paid_at")
 	private Date paid_at;
 
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
 
 	@ManyToOne

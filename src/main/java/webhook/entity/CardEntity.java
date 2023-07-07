@@ -3,6 +3,7 @@ package webhook.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,34 +15,47 @@ import javax.persistence.Table;
 public class CardEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
+	@Column(name = "card_id")
 	private String card_id;
 
+	@Column(name = "first_six_digits")
 	private String first_six_digits;
 
+	@Column(name = "last_four_digits")
 	private String last_four_digits;
 
-	private String brand;
+	@Column(name = "card_brand")
+	private String card_brand;
 
+	@Column(name = "holder_name")
 	private String holder_name;
 
+	@Column(name = "holder_document")
 	private String holder_document;
 
+	@Column(name = "exp_month")
 	private Integer exp_month;
 
+	@Column(name = "exp_year")
 	private Integer exp_year;
 
+	@Column(name = "card_status")
 	private String card_status;
 
-	private String type;
+	@Column(name = "card_type")
+	private String card_type;
 
-	private String label;
+	@Column(name = "card_label")
+	private String card_label;
 
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
-
+	
 	@OneToOne(mappedBy = "card")
 	private LastTransactionEntity last_transaction;
 
@@ -72,12 +86,12 @@ public class CardEntity implements Serializable {
 		this.last_four_digits = last_four_digits;
 	}
 
-	public String getBrand() {
-		return brand;
+	public String getCard_brand() {
+		return card_brand;
 	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setCard_brand(String card_brand) {
+		this.card_brand = card_brand;
 	}
 
 	public String getHolder_name() {
@@ -111,7 +125,7 @@ public class CardEntity implements Serializable {
 	public void setExp_year(Integer exp_year) {
 		this.exp_year = exp_year;
 	}
-	
+
 	public String getCard_status() {
 		return card_status;
 	}
@@ -120,20 +134,20 @@ public class CardEntity implements Serializable {
 		this.card_status = card_status;
 	}
 
-	public String getType() {
-		return type;
+	public String getCard_type() {
+		return card_type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setCard_type(String card_type) {
+		this.card_type = card_type;
 	}
 
-	public String getLabel() {
-		return label;
+	public String getCard_label() {
+		return card_label;
 	}
 
-	public void setLabel(String label) {
-		this.label = label;
+	public void setCard_label(String card_label) {
+		this.card_label = card_label;
 	}
 
 	public Date getCreated_at() {
@@ -172,22 +186,22 @@ public class CardEntity implements Serializable {
 		super();
 	}
 
-	public CardEntity(String card_id, String first_six_digits, String last_four_digits, String brand, String holder_name,
-			String holder_document, Integer exp_month, Integer exp_year, String card_status, String type, String label,
-			Date created_at, Date updated_at, LastTransactionEntity last_transaction,
-			BillingAddressEntity billingAddress) {
+	public CardEntity(String card_id, String first_six_digits, String last_four_digits, String card_brand,
+			String holder_name, String holder_document, Integer exp_month, Integer exp_year, String card_status,
+			String card_type, String card_label, Date created_at, Date updated_at,
+			LastTransactionEntity last_transaction, BillingAddressEntity billingAddress) {
 		super();
 		this.card_id = card_id;
 		this.first_six_digits = first_six_digits;
 		this.last_four_digits = last_four_digits;
-		this.brand = brand;
+		this.card_brand = card_brand;
 		this.holder_name = holder_name;
 		this.holder_document = holder_document;
 		this.exp_month = exp_month;
 		this.exp_year = exp_year;
 		this.card_status = card_status;
-		this.type = type;
-		this.label = label;
+		this.card_type = card_type;
+		this.card_label = card_label;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 		this.last_transaction = last_transaction;

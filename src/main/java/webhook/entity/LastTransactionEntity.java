@@ -3,6 +3,7 @@ package webhook.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,60 +17,80 @@ import javax.persistence.Table;
 public class LastTransactionEntity {
 
 	@Id
-	private String id;
+	@Column(name = "last_transaction_id")
+	private String last_transaction_id;
 
+	@Column(name = "transaction_type")
 	private String transaction_type;
 
+	@Column(name = "gateway_id")
 	private String gateway_id;
 
+	@Column(name = "amount")
 	private double amount;
-
+	
+	@Column(name = "status")
 	private String status;
 
+	@Column(name = "success")
 	private boolean success;
 
+	@Column(name = "installments")
 	private int installments;
 
+	@Column(name = "statement_descriptor")
 	private String statement_descriptor;
 
+	@Column(name = "acquirer_name")
 	private String acquirer_name;
 
+	@Column(name = "acquirer_tid")
 	private String acquirer_tid;
 
+	@Column(name = "acquirer_nsu")
 	private String acquirer_nsu;
 
+	@Column(name = "acquirer_auth_code")
 	private String acquirer_auth_code;
 
+	@Column(name = "acquirer_message")
 	private String acquirer_message;
 
+	@Column(name = "acquirer_return_code")
 	private String acquirer_return_code;
 
+	@Column(name = "operation_type")
 	private String operation_type;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id")
 	private CardEntity card;
 
+	@Column(name = "funding_source")
 	private String funding_source;
 
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
 
 	@Embedded
+	@Column(name = "gateway_response")
 	private GatewayResponseEntity gateway_response;
 
 	@Embedded
+	@Column(name = "antifraud_response")
 	private AntifraudResponseEntity antifraud_response;
 
 	/*
 	 * @ElementCollection
-	 * 
+	 *
 	 * @CollectionTable(name = "last_transaction_metadata", joinColumns
 	 * = @JoinColumn(name = "last_transaction_id"))
-	 * 
+	 *
 	 * @MapKeyColumn(name = "metadata_key")
-	 * 
+	 *
 	 * @Column(name = "metadata_value") private Map<String, String> metadata;
 	 */
 
@@ -77,12 +98,12 @@ public class LastTransactionEntity {
 	@JoinColumn(name = "charge_id")
 	private ChargeEntity charge;
 
-	public String getId() {
-		return id;
+	public String getLast_transaction_id() {
+		return last_transaction_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setLast_transaction_id(String last_transaction_id) {
+		this.last_transaction_id = last_transaction_id;
 	}
 
 	public String getTransaction_type() {
@@ -257,13 +278,14 @@ public class LastTransactionEntity {
 		super();
 	}
 
-	public LastTransactionEntity(String id, String transaction_type, String gateway_id, double amount, String status,
-			boolean success, int installments, String statement_descriptor, String acquirer_name, String acquirer_tid,
-			String acquirer_nsu, String acquirer_auth_code, String acquirer_message, String acquirer_return_code,
-			String operation_type, CardEntity card, String funding_source, Date created_at, Date updated_at,
-			GatewayResponseEntity gateway_response, AntifraudResponseEntity antifraud_response, ChargeEntity charge) {
+	public LastTransactionEntity(String last_transaction_id, String transaction_type, String gateway_id, double amount,
+			String status, boolean success, int installments, String statement_descriptor, String acquirer_name,
+			String acquirer_tid, String acquirer_nsu, String acquirer_auth_code, String acquirer_message,
+			String acquirer_return_code, String operation_type, CardEntity card, String funding_source, Date created_at,
+			Date updated_at, GatewayResponseEntity gateway_response, AntifraudResponseEntity antifraud_response,
+			ChargeEntity charge) {
 		super();
-		this.id = id;
+		this.last_transaction_id = last_transaction_id;
 		this.transaction_type = transaction_type;
 		this.gateway_id = gateway_id;
 		this.amount = amount;

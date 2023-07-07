@@ -22,8 +22,8 @@ public class PhonesEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phones_sequence")
     @SequenceGenerator(name = "phones_sequence", sequenceName = "PHONES_SEQ", allocationSize = 1)
-    @Column(name = "id_phones", unique = true, nullable = false)
-    private Long id;
+    @Column(name = "phones_id", unique = true, nullable = false)
+    private Long phones_id;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "home_phone_id")
@@ -33,12 +33,12 @@ public class PhonesEntity implements Serializable {
 	@JoinColumn(name = "mobile_phone_id")
 	private MobilePhoneEntity mobile_phone;
 
-	public Long getId() {
-		return id;
+	public Long getPhones_id() {
+		return phones_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPhones_id(Long phones_id) {
+		this.phones_id = phones_id;
 	}
 
 	public HomePhoneEntity getHome_phone() {
@@ -61,9 +61,9 @@ public class PhonesEntity implements Serializable {
 		super();
 	}
 
-	public PhonesEntity(Long id, HomePhoneEntity home_phone, MobilePhoneEntity mobile_phone) {
+	public PhonesEntity(Long phones_id, HomePhoneEntity home_phone, MobilePhoneEntity mobile_phone) {
 		super();
-		this.id = id;
+		this.phones_id = phones_id;
 		this.home_phone = home_phone;
 		this.mobile_phone = mobile_phone;
 	}

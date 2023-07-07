@@ -3,12 +3,14 @@ package webhook.entity;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class GatewayResponseEntity {
 
+	@Column(name = "code")
 	private String code;
 
 	@ElementCollection

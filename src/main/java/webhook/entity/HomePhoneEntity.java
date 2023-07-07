@@ -19,9 +19,9 @@ public class HomePhoneEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "home_phone_sequence")
     @SequenceGenerator(name = "home_phone_sequence", sequenceName = "HOME_PHONE_SEQ", allocationSize = 1)
-    @Column(name = "id_home_phone", unique = true, nullable = false)
-    private Long id;
-	
+    @Column(name = "home_phone_id", unique = true, nullable = false)
+    private Long home_phone_id;
+
 	@Column(name = "country_code")
 	private String country_code;
 
@@ -31,12 +31,12 @@ public class HomePhoneEntity implements Serializable {
 	@Column(name = "area_code")
 	private String area_code;
 
-	public Long getId() {
-		return id;
+	public Long getHome_phone_id() {
+		return home_phone_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setHome_phone_id(Long home_phone_id) {
+		this.home_phone_id = home_phone_id;
 	}
 
 	public String getCountry_code() {
@@ -63,13 +63,17 @@ public class HomePhoneEntity implements Serializable {
 		this.area_code = area_code;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public HomePhoneEntity() {
 		super();
 	}
 
-	public HomePhoneEntity(Long id, String country_code, String number, String area_code) {
+	public HomePhoneEntity(Long home_phone_id, String country_code, String number, String area_code) {
 		super();
-		this.id = id;
+		this.home_phone_id = home_phone_id;
 		this.country_code = country_code;
 		this.number = number;
 		this.area_code = area_code;

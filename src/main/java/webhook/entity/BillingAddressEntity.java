@@ -1,28 +1,39 @@
 package webhook.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class BillingAddressEntity {
 
+	@Column(name = "street")
 	private String street;
 
+	@Column(name = "number")
 	private String number;
 
+	@Column(name = "complement")
 	private String complement;
 
+	@Column(name = "zip_code")
 	private String zip_code;
 
+	@Column(name = "neighborhood")
 	private String neighborhood;
 
+	@Column(name = "city")
 	private String city;
 
+	@Column(name = "state")
 	private String state;
 
+	@Column(name = "country")
 	private String country;
 
+	@Column(name = "line1")
 	private String line1;
 
+	@Column(name = "line2")
 	private String line2;
 
 	public String getStreet() {

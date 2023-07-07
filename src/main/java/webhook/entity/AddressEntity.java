@@ -3,39 +3,50 @@ package webhook.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "address_customer", schema = "DUMMY")
+@Table(name = "addresses", schema = "DUMMY")
 public class AddressEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "address_id")
 	private String address_id;
 
+	@Column(name = "line_1")
 	private String line_1;
 
+	@Column(name = "line_2")
 	private String line_2;
 
+	@Column(name = "zip_code")
 	private String zip_code;
 
+	@Column(name = "city")
 	private String city;
 
+	@Column(name = "state")
 	private String state;
 
+	@Column(name = "country")
 	private String country;
 
+	@Column(name = "status")
 	private String status;
-
+	
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
 
-	@OneToOne(mappedBy = "address_customer")
+	@OneToOne(mappedBy = "addresses")
 	private CustomerEntity customer;
 
 	public String getAddress_id() {
@@ -127,6 +138,7 @@ public class AddressEntity implements Serializable {
 	}
 
 	public AddressEntity() {
+		super();
 	}
 
 	public AddressEntity(String address_id, String line_1, String line_2, String zip_code, String city, String state,

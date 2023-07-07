@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,44 +18,56 @@ public class CustomerEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
+	@Column(name = "customer_id")
+	private String customer_id;
 
+	@Column(name = "name")
 	private String name;
 
+	@Column(name = "email")
 	private String email;
 
+	@Column(name = "code")
 	private String code;
 
+	@Column(name = "document")
 	private String document;
 
+	@Column(name = "document_type")
 	private String document_type;
 
+	@Column(name = "type")
 	private String type;
 
+	@Column(name = "gender")
 	private String gender;
 
+	@Column(name = "delinquent")
 	private boolean delinquent;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
-	private AddressEntity address_customer;
+	private AddressEntity addresses;
 
+	@Column(name = "created_at")
 	private Date created_at;
 
+	@Column(name = "updated_at")
 	private Date updated_at;
 
+	@Column(name = "birthdate")
 	private Date birthdate;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "phones_id")
 	private PhonesEntity phones;
 
-	public String getId() {
-		return id;
+	public String getCustomer_id() {
+		return customer_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	public String getName() {
@@ -121,12 +134,12 @@ public class CustomerEntity implements Serializable {
 		this.delinquent = delinquent;
 	}
 
-	public AddressEntity getAddress() {
-		return address_customer;
+	public AddressEntity getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(AddressEntity address) {
-		this.address_customer = address;
+	public void setAddresses(AddressEntity addresses) {
+		this.addresses = addresses;
 	}
 
 	public Date getCreated_at() {
@@ -161,15 +174,19 @@ public class CustomerEntity implements Serializable {
 		this.phones = phones;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public CustomerEntity() {
 		super();
 	}
 
-	public CustomerEntity(String id, String name, String email, String code, String document, String document_type,
-			String type, String gender, boolean delinquent, AddressEntity address_customer, Date created_at, Date updated_at,
-			Date birthdate, PhonesEntity phones) {
+	public CustomerEntity(String customer_id, String name, String email, String code, String document,
+			String document_type, String type, String gender, boolean delinquent, AddressEntity addresses,
+			Date created_at, Date updated_at, Date birthdate, PhonesEntity phones) {
 		super();
-		this.id = id;
+		this.customer_id = customer_id;
 		this.name = name;
 		this.email = email;
 		this.code = code;
@@ -178,7 +195,7 @@ public class CustomerEntity implements Serializable {
 		this.type = type;
 		this.gender = gender;
 		this.delinquent = delinquent;
-		this.address_customer = address_customer;
+		this.addresses = addresses;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 		this.birthdate = birthdate;

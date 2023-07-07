@@ -1,5 +1,6 @@
 package webhook.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,18 +12,19 @@ import javax.persistence.Table;
 public class CheckoutEntity {
 
 	@Id
-	private String id;
+	@Column(name = "checkout_id")
+	private String checkout_id;
 
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private OrderEntity order;
 
-	public String getId() {
-		return id;
+	public String getCheckout_id() {
+		return checkout_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCheckout_id(String checkout_id) {
+		this.checkout_id = checkout_id;
 	}
 
 	public OrderEntity getOrder() {
@@ -37,9 +39,9 @@ public class CheckoutEntity {
 		super();
 	}
 
-	public CheckoutEntity(String id, OrderEntity order) {
+	public CheckoutEntity(String checkout_id, OrderEntity order) {
 		super();
-		this.id = id;
+		this.checkout_id = checkout_id;
 		this.order = order;
 	}
 
