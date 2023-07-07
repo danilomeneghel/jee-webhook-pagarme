@@ -15,13 +15,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "phones", schema = "DUMMY")
+@SequenceGenerator(name = "phones_sequence", sequenceName = "PHONES_SEQ", allocationSize = 1)
 public class PhonesEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phones_sequence")
-    @SequenceGenerator(name = "phones_sequence", sequenceName = "PHONES_SEQ", allocationSize = 1)
     @Column(name = "phones_id", unique = true, nullable = false)
     private Long phones_id;
 

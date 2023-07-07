@@ -174,10 +174,6 @@ public class CustomerEntity implements Serializable {
 		this.phones = phones;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public CustomerEntity() {
 		super();
 	}

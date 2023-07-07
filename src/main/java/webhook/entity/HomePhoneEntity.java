@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "home_phone", schema = "DUMMY")
+@SequenceGenerator(name = "home_phone_sequence", sequenceName = "HOME_PHONE_SEQ", allocationSize = 1)
 public class HomePhoneEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "home_phone_sequence")
-    @SequenceGenerator(name = "home_phone_sequence", sequenceName = "HOME_PHONE_SEQ", allocationSize = 1)
     @Column(name = "home_phone_id", unique = true, nullable = false)
     private Long home_phone_id;
 
@@ -61,10 +61,6 @@ public class HomePhoneEntity implements Serializable {
 
 	public void setArea_code(String area_code) {
 		this.area_code = area_code;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public HomePhoneEntity() {
