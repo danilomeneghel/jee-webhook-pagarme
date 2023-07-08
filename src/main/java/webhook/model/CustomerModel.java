@@ -1,10 +1,13 @@
 package webhook.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerModel {
+public class CustomerModel implements Serializable {
 
-	private String id;
+	private static final long serialVersionUID = 1L;
+
+	private String customer_id;
 
 	private String name;
 
@@ -22,7 +25,7 @@ public class CustomerModel {
 
 	private boolean delinquent;
 
-	private AddressModel address;
+	private AddressModel addresses;
 
 	private Date created_at;
 
@@ -32,12 +35,12 @@ public class CustomerModel {
 
 	private PhonesModel phones;
 
-	public String getId() {
-		return id;
+	public String getCustomer_id() {
+		return customer_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	public String getName() {
@@ -104,12 +107,12 @@ public class CustomerModel {
 		this.delinquent = delinquent;
 	}
 
-	public AddressModel getAddress() {
-		return address;
+	public AddressModel getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(AddressModel address) {
-		this.address = address;
+	public void setAddresses(AddressModel addresses) {
+		this.addresses = addresses;
 	}
 
 	public Date getCreated_at() {
@@ -148,11 +151,11 @@ public class CustomerModel {
 		super();
 	}
 
-	public CustomerModel(String id, String name, String email, String code, String document, String document_type,
-			String type, String gender, boolean delinquent, AddressModel address, Date created_at, Date updated_at,
-			Date birthdate, PhonesModel phones) {
+	public CustomerModel(String customer_id, String name, String email, String code, String document,
+			String document_type, String type, String gender, boolean delinquent, AddressModel addresses,
+			Date created_at, Date updated_at, Date birthdate, PhonesModel phones) {
 		super();
-		this.id = id;
+		this.customer_id = customer_id;
 		this.name = name;
 		this.email = email;
 		this.code = code;
@@ -161,7 +164,7 @@ public class CustomerModel {
 		this.type = type;
 		this.gender = gender;
 		this.delinquent = delinquent;
-		this.address = address;
+		this.addresses = addresses;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 		this.birthdate = birthdate;

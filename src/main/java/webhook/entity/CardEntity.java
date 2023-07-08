@@ -69,6 +69,6 @@ public class CardEntity implements Serializable {
 		this.holder_name = holder_name;
 	}
 
-	
-	
+
+
 }

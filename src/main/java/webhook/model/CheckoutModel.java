@@ -2,16 +2,16 @@ package webhook.model;
 
 public class CheckoutModel {
 
-	private String id;
+	private String checkout_id;
 
 	private OrderModel order;
 
-	public String getId() {
-		return id;
+	public String getCheckout_id() {
+		return checkout_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCheckout_id(String checkout_id) {
+		this.checkout_id = checkout_id;
 	}
 
 	public OrderModel getOrder() {
@@ -26,9 +26,9 @@ public class CheckoutModel {
 		super();
 	}
 
-	public CheckoutModel(String id, OrderModel order) {
+	public CheckoutModel(String checkout_id, OrderModel order) {
 		super();
-		this.id = id;
+		this.checkout_id = checkout_id;
 		this.order = order;
 	}
 

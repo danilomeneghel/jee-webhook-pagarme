@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ItemModel {
 
-	private String id;
+	private String item_id;
 
 	private String type;
 
@@ -24,12 +24,12 @@ public class ItemModel {
 
 	private OrderModel order;
 
-	public String getId() {
-		return id;
+	public String getItem_id() {
+		return item_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setItem_id(String item_id) {
+		this.item_id = item_id;
 	}
 
 	public String getType() {
@@ -108,10 +108,10 @@ public class ItemModel {
 		super();
 	}
 
-	public ItemModel(String id, String type, String description, double amount, int quantity, String status,
+	public ItemModel(String item_id, String type, String description, double amount, int quantity, String status,
 			Date created_at, Date updated_at, String code, OrderModel order) {
 		super();
-		this.id = id;
+		this.item_id = item_id;
 		this.type = type;
 		this.description = description;
 		this.amount = amount;

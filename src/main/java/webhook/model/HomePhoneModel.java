@@ -1,12 +1,26 @@
 package webhook.model;
 
-public class HomePhoneModel {
+import java.io.Serializable;
+
+public class HomePhoneModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+    private Long home_phone_id;
 
 	private String country_code;
 
 	private String number;
 
 	private String area_code;
+
+	public Long getHome_phone_id() {
+		return home_phone_id;
+	}
+
+	public void setHome_phone_id(Long home_phone_id) {
+		this.home_phone_id = home_phone_id;
+	}
 
 	public String getCountry_code() {
 		return country_code;
@@ -36,8 +50,9 @@ public class HomePhoneModel {
 		super();
 	}
 
-	public HomePhoneModel(String country_code, String number, String area_code) {
+	public HomePhoneModel(Long home_phone_id, String country_code, String number, String area_code) {
 		super();
+		this.home_phone_id = home_phone_id;
 		this.country_code = country_code;
 		this.number = number;
 		this.area_code = area_code;

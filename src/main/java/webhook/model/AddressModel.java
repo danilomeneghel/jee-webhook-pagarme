@@ -118,6 +118,7 @@ public class AddressModel implements Serializable {
 	}
 
 	public AddressModel() {
+		super();
 	}
 
 	public AddressModel(String address_id, String line_1, String line_2, String zip_code, String city, String state,

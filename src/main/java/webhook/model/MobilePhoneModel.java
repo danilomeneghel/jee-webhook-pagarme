@@ -1,12 +1,26 @@
 package webhook.model;
 
-public class MobilePhoneModel {
+import java.io.Serializable;
+
+public class MobilePhoneModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+    private Long mobile_phone_id;
 
 	private String country_code;
 
 	private String number;
 
 	private String area_code;
+
+	public Long getMobile_phone_id() {
+		return mobile_phone_id;
+	}
+
+	public void setMobile_phone_id(Long mobile_phone_id) {
+		this.mobile_phone_id = mobile_phone_id;
+	}
 
 	public String getCountry_code() {
 		return country_code;
@@ -36,8 +50,9 @@ public class MobilePhoneModel {
 		super();
 	}
 
-	public MobilePhoneModel(String country_code, String number, String area_code) {
+	public MobilePhoneModel(Long mobile_phone_id, String country_code, String number, String area_code) {
 		super();
+		this.mobile_phone_id = mobile_phone_id;
 		this.country_code = country_code;
 		this.number = number;
 		this.area_code = area_code;

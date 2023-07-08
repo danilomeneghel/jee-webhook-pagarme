@@ -2,15 +2,9 @@ package webhook.model;
 
 import java.util.Date;
 
-import javax.persistence.Embedded;
-
-import webhook.entity.CardEntity;
-import webhook.entity.ChargeEntity;
-import webhook.entity.GatewayResponseEntity;
-
 public class LastTransactionModel {
 
-	private String id;
+	private String last_transaction_id;
 
 	private String transaction_type;
 
@@ -40,7 +34,7 @@ public class LastTransactionModel {
 
 	private String operation_type;
 
-	private CardEntity card;
+	private CardModel card;
 
 	private String funding_source;
 
@@ -48,19 +42,14 @@ public class LastTransactionModel {
 
 	private Date updated_at;
 
-	@Embedded
-	private GatewayResponseEntity gateway_response;
+	private ChargeModel charge;
 
-	private AntifraudResponseModel antifraud_response;
-
-	private ChargeEntity charge;
-
-	public String getId() {
-		return id;
+	public String getLast_transaction_id() {
+		return last_transaction_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setLast_transaction_id(String last_transaction_id) {
+		this.last_transaction_id = last_transaction_id;
 	}
 
 	public String getTransaction_type() {
@@ -175,11 +164,11 @@ public class LastTransactionModel {
 		this.operation_type = operation_type;
 	}
 
-	public CardEntity getCard() {
+	public CardModel getCard() {
 		return card;
 	}
 
-	public void setCard(CardEntity card) {
+	public void setCard(CardModel card) {
 		this.card = card;
 	}
 
@@ -207,27 +196,11 @@ public class LastTransactionModel {
 		this.updated_at = updated_at;
 	}
 
-	public GatewayResponseEntity getGateway_response() {
-		return gateway_response;
-	}
-
-	public void setGateway_response(GatewayResponseEntity gateway_response) {
-		this.gateway_response = gateway_response;
-	}
-
-	public AntifraudResponseModel getAntifraud_response() {
-		return antifraud_response;
-	}
-
-	public void setAntifraud_response(AntifraudResponseModel antifraud_response) {
-		this.antifraud_response = antifraud_response;
-	}
-
-	public ChargeEntity getCharge() {
+	public ChargeModel getCharge() {
 		return charge;
 	}
 
-	public void setCharge(ChargeEntity charge) {
+	public void setCharge(ChargeModel charge) {
 		this.charge = charge;
 	}
 
@@ -235,13 +208,13 @@ public class LastTransactionModel {
 		super();
 	}
 
-	public LastTransactionModel(String id, String transaction_type, String gateway_id, double amount, String status,
-			boolean success, int installments, String statement_descriptor, String acquirer_name, String acquirer_tid,
-			String acquirer_nsu, String acquirer_auth_code, String acquirer_message, String acquirer_return_code,
-			String operation_type, CardEntity card, String funding_source, Date created_at, Date updated_at,
-			GatewayResponseEntity gateway_response, AntifraudResponseModel antifraud_response, ChargeEntity charge) {
+	public LastTransactionModel(String last_transaction_id, String transaction_type, String gateway_id, double amount,
+			String status, boolean success, int installments, String statement_descriptor, String acquirer_name,
+			String acquirer_tid, String acquirer_nsu, String acquirer_auth_code, String acquirer_message,
+			String acquirer_return_code, String operation_type, CardModel card, String funding_source, Date created_at,
+			Date updated_at, ChargeModel charge) {
 		super();
-		this.id = id;
+		this.last_transaction_id = last_transaction_id;
 		this.transaction_type = transaction_type;
 		this.gateway_id = gateway_id;
 		this.amount = amount;
@@ -260,8 +233,6 @@ public class LastTransactionModel {
 		this.funding_source = funding_source;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.gateway_response = gateway_response;
-		this.antifraud_response = antifraud_response;
 		this.charge = charge;
 	}
 

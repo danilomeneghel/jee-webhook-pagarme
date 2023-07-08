@@ -7,25 +7,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "home_phone", schema = "DUMMY")
-@SequenceGenerator(name = "home_phone_sequence", sequenceName = "HOME_PHONE_SEQ", allocationSize = 1)
 public class HomePhoneEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "home_phone_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "home_phone_id", unique = true, nullable = false)
     private Long home_phone_id;
 
 	@Column(name = "country_code")
 	private String country_code;
 
-	@Column(name = "number")
+	@Column(name = "phone_number")
 	private String number;
 
 	@Column(name = "area_code")

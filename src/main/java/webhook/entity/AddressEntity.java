@@ -39,7 +39,7 @@ public class AddressEntity implements Serializable {
 
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "created_at")
 	private Date created_at;
 

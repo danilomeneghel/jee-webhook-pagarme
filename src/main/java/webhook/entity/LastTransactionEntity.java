@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,7 +27,7 @@ public class LastTransactionEntity {
 
 	@Column(name = "amount")
 	private double amount;
-	
+
 	@Column(name = "status")
 	private String status;
 
@@ -75,7 +74,7 @@ public class LastTransactionEntity {
 	@Column(name = "updated_at")
 	private Date updated_at;
 
-	@Embedded
+	/*@Embedded
 	@Column(name = "gateway_response")
 	private GatewayResponseEntity gateway_response;
 
@@ -83,16 +82,12 @@ public class LastTransactionEntity {
 	@Column(name = "antifraud_response")
 	private AntifraudResponseEntity antifraud_response;
 
-	/*
-	 * @ElementCollection
-	 *
-	 * @CollectionTable(name = "last_transaction_metadata", joinColumns
-	 * = @JoinColumn(name = "last_transaction_id"))
-	 *
-	 * @MapKeyColumn(name = "metadata_key")
-	 *
-	 * @Column(name = "metadata_value") private Map<String, String> metadata;
-	 */
+	@ElementCollection
+	@CollectionTable(name = "last_transaction_metadata", joinColumns
+	= @JoinColumn(name = "last_transaction_id"))
+	@MapKeyColumn(name = "metadata_key")
+	@Column(name = "metadata_value")
+	private Map<String, String> metadata;*/
 
 	@ManyToOne
 	@JoinColumn(name = "charge_id")
@@ -250,22 +245,6 @@ public class LastTransactionEntity {
 		this.updated_at = updated_at;
 	}
 
-	public GatewayResponseEntity getGateway_response() {
-		return gateway_response;
-	}
-
-	public void setGateway_response(GatewayResponseEntity gateway_response) {
-		this.gateway_response = gateway_response;
-	}
-
-	public AntifraudResponseEntity getAntifraud_response() {
-		return antifraud_response;
-	}
-
-	public void setAntifraud_response(AntifraudResponseEntity antifraud_response) {
-		this.antifraud_response = antifraud_response;
-	}
-
 	public ChargeEntity getCharge() {
 		return charge;
 	}
@@ -282,8 +261,7 @@ public class LastTransactionEntity {
 			String status, boolean success, int installments, String statement_descriptor, String acquirer_name,
 			String acquirer_tid, String acquirer_nsu, String acquirer_auth_code, String acquirer_message,
 			String acquirer_return_code, String operation_type, CardEntity card, String funding_source, Date created_at,
-			Date updated_at, GatewayResponseEntity gateway_response, AntifraudResponseEntity antifraud_response,
-			ChargeEntity charge) {
+			Date updated_at, ChargeEntity charge) {
 		super();
 		this.last_transaction_id = last_transaction_id;
 		this.transaction_type = transaction_type;
@@ -304,8 +282,6 @@ public class LastTransactionEntity {
 		this.funding_source = funding_source;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.gateway_response = gateway_response;
-		this.antifraud_response = antifraud_response;
 		this.charge = charge;
 	}
 
