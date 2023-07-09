@@ -23,10 +23,10 @@ public class OrderController {
 	OrderDao orderDao;
 
 	@GET
-    @Path("{id:\\d+}")
+    @Path("{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-	public Response findById(@PathParam("id") String id) throws IOException {
-		OrderModel orderModel = orderDao.findById(id);
+	public Response findOne(@PathParam("uuid") String uuid) throws IOException {
+		OrderModel orderModel = orderDao.findOne(uuid);
 		return Response.ok().entity(orderModel).build();
 	}
 

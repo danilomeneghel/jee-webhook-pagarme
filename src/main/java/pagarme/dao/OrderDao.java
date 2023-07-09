@@ -21,9 +21,9 @@ public class OrderDao {
 
 	private ModelMapper modelMapper = new ModelMapper();
 
-	public OrderModel findById(String id) throws IOException {
+	public OrderModel findOne(String order_id) throws IOException {
 		try {
-			OrderEntity order = entityManager.find(OrderEntity.class, id);
+			OrderEntity order = entityManager.find(OrderEntity.class, order_id);
 			return modelMapper.map(order, OrderModel.class);
 		} catch (Exception e) {
 			throw new IOException("Erro ao encontrar registro: " + e);
