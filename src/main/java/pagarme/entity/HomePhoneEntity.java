@@ -1,7 +1,5 @@
 package pagarme.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +9,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "home_phone", schema = "DUMMY")
-public class HomePhoneEntity implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+@Table(name = "home_phone")
+public class HomePhoneEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_HOME_PHONE_ID")

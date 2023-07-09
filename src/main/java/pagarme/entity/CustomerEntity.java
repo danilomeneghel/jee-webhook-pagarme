@@ -1,6 +1,5 @@
 package pagarme.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -12,10 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "customer", schema = "DUMMY")
-public class CustomerEntity implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+@Table(name = "customer")
+public class CustomerEntity {
 
 	@Id
 	@Column(name = "customer_id")
@@ -47,7 +44,7 @@ public class CustomerEntity implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
-	private AddressEntity addresses;
+	private AddressEntity address;
 
 	@Column(name = "created_at")
 	private Date created_at;
@@ -134,12 +131,12 @@ public class CustomerEntity implements Serializable {
 		this.delinquent = delinquent;
 	}
 
-	public AddressEntity getAddresses() {
-		return addresses;
+	public AddressEntity getAddress() {
+		return address;
 	}
 
-	public void setAddresses(AddressEntity addresses) {
-		this.addresses = addresses;
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
 
 	public Date getCreated_at() {
@@ -179,7 +176,7 @@ public class CustomerEntity implements Serializable {
 	}
 
 	public CustomerEntity(String customer_id, String name, String email, String code, String document,
-			String document_type, String type, String gender, boolean delinquent, AddressEntity addresses,
+			String document_type, String type, String gender, boolean delinquent, AddressEntity address,
 			Date created_at, Date updated_at, Date birthdate, PhonesEntity phones) {
 		super();
 		this.customer_id = customer_id;
@@ -191,7 +188,7 @@ public class CustomerEntity implements Serializable {
 		this.type = type;
 		this.gender = gender;
 		this.delinquent = delinquent;
-		this.addresses = addresses;
+		this.address = address;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 		this.birthdate = birthdate;

@@ -1,10 +1,6 @@
 package pagarme.model;
 
-import java.io.Serializable;
-
-public class MobilePhoneModel implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class MobilePhoneModel {
 
     private Long mobile_phone_id;
 

@@ -1,6 +1,5 @@
 package pagarme.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,10 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "addresses", schema = "DUMMY")
-public class AddressEntity implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+@Table(name = "address")
+public class AddressEntity {
 
 	@Id
 	@Column(name = "address_id")

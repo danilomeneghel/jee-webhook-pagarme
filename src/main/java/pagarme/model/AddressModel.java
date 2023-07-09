@@ -1,11 +1,8 @@
 package pagarme.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class AddressModel implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class AddressModel {
 
 	private String address_id;
 
@@ -26,8 +23,6 @@ public class AddressModel implements Serializable {
 	private Date created_at;
 
 	private Date updated_at;
-
-	private CustomerModel customer;
 
 	public String getAddress_id() {
 		return address_id;
@@ -109,20 +104,12 @@ public class AddressModel implements Serializable {
 		this.updated_at = updated_at;
 	}
 
-	public CustomerModel getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(CustomerModel customer) {
-		this.customer = customer;
-	}
-
 	public AddressModel() {
 		super();
 	}
 
 	public AddressModel(String address_id, String line_1, String line_2, String zip_code, String city, String state,
-			String country, String status, Date created_at, Date updated_at, CustomerModel customer) {
+			String country, String status, Date created_at, Date updated_at) {
 		super();
 		this.address_id = address_id;
 		this.line_1 = line_1;
@@ -134,7 +121,6 @@ public class AddressModel implements Serializable {
 		this.status = status;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.customer = customer;
 	}
 
 }

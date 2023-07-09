@@ -1,17 +1,13 @@
 package pagarme.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "card", schema = "DUMMY")
-public class CardEntity implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+@Table(name = "card")
+public class CardEntity {
 
 	@Id
 	@Column(name = "card_id")
