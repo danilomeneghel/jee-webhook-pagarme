@@ -20,26 +20,27 @@ import pagarme.model.CustomerModel;
 public class CustomerController {
 
 	@EJB
-	CustomerDao customerService;
+	CustomerDao customerDao;
 
 	@GET
-	@Path("{id:\\d+}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public CustomerModel findById(@PathParam("id") String id) throws IOException {
-		return customerService.findById(id);
+    @Path("{id:\\d+}")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Response findById(@PathParam("id") String id) throws IOException {
+		CustomerModel customer = customerDao.findById(id);
+		return Response.ok().entity(customer).build();
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CustomerModel> findAll() throws IOException {
-		return customerService.findAll();
+		return customerDao.findAll();
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response save(CustomerModel customerModel) throws IOException {
-		CustomerModel savedCustomer = customerService.save(customerModel);
+		CustomerModel savedCustomer = customerDao.save(customerModel);
 		return Response.status(Response.Status.CREATED).entity(savedCustomer).build();
 	}
 

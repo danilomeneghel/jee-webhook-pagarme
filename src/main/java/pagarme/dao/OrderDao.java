@@ -21,13 +21,22 @@ public class OrderDao {
 
 	private ModelMapper modelMapper = new ModelMapper();
 
+	public OrderModel findById(String id) throws IOException {
+		try {
+			OrderEntity order = entityManager.find(OrderEntity.class, id);
+			return modelMapper.map(order, OrderModel.class);
+		} catch (Exception e) {
+			throw new IOException("Erro ao encontrar registro: " + e);
+		}
+	}
+
 	public OrderModel save(OrderModel orderModel) throws IOException {
 		try {
 			OrderEntity orderEntity = modelMapper.map(orderModel, OrderEntity.class);
 			entityManager.persist(orderEntity);
 			return modelMapper.map(orderEntity, OrderModel.class);
 		} catch (Exception e) {
-			throw new IOException("Erro ao salvar os dados: " + e);
+			throw new IOException("Erro ao salvar registro: " + e);
 		}
 	}
 

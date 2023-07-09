@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -45,9 +44,6 @@ public class AddressEntity implements Serializable {
 
 	@Column(name = "updated_at")
 	private Date updated_at;
-
-	@OneToOne(mappedBy = "addresses")
-	private CustomerEntity customer;
 
 	public String getAddress_id() {
 		return address_id;
@@ -128,21 +124,13 @@ public class AddressEntity implements Serializable {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
-
-	public CustomerEntity getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(CustomerEntity customer) {
-		this.customer = customer;
-	}
-
+	
 	public AddressEntity() {
 		super();
 	}
 
 	public AddressEntity(String address_id, String line_1, String line_2, String zip_code, String city, String state,
-			String country, String status, Date created_at, Date updated_at, CustomerEntity customer) {
+			String country, String status, Date created_at, Date updated_at) {
 		super();
 		this.address_id = address_id;
 		this.line_1 = line_1;
@@ -154,7 +142,6 @@ public class AddressEntity implements Serializable {
 		this.status = status;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.customer = customer;
 	}
 
 }

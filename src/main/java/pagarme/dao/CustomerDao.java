@@ -3,6 +3,7 @@ package pagarme.dao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -47,7 +48,7 @@ public class CustomerDao {
             }
             return customerModels;
         } catch (Exception e) {
-            throw new IOException("Error finding records: " + e);
+            throw new IOException("Erro ao encontrar registro: " + e);
         }
     }
 
@@ -57,7 +58,7 @@ public class CustomerDao {
 			entityManager.persist(customerEntity);
 			return modelMapper.map(customerEntity, CustomerModel.class);
 		} catch (Exception e) {
-			throw new IOException("Erro ao salvar os dados: " + e);
+			throw new IOException("Erro ao salvar registro: " + e);
 		}
 	}
 
