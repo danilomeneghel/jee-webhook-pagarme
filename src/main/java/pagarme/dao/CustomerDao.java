@@ -24,9 +24,9 @@ public class CustomerDao {
 
 	private ModelMapper modelMapper = new ModelMapper();
 
-	public CustomerModel findById(String id) throws IOException {
+	public CustomerModel findOne(String customer_id) throws IOException {
 		try {
-			CustomerEntity customer = entityManager.find(CustomerEntity.class, id);
+			CustomerEntity customer = entityManager.find(CustomerEntity.class, customer_id);
 			return modelMapper.map(customer, CustomerModel.class);
 		} catch (Exception e) {
 			throw new IOException("Erro ao encontrar registro: " + e);

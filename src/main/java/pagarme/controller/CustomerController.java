@@ -23,10 +23,10 @@ public class CustomerController {
 	CustomerDao customerDao;
 
 	@GET
-    @Path("{id:\\d+}")
+    @Path("{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-	public Response findById(@PathParam("id") String id) throws IOException {
-		CustomerModel customer = customerDao.findById(id);
+	public Response findOne(@PathParam("uuid") String uuid) throws IOException {
+		CustomerModel customer = customerDao.findOne(uuid);
 		return Response.ok().entity(customer).build();
 	}
 
