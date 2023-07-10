@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class LastTransactionModel {
 
-	private String last_transaction_id;
+    private Long last_transaction_id;
+	
+	private String id;
 
 	private String transaction_type;
 
@@ -42,14 +44,20 @@ public class LastTransactionModel {
 
 	private Date updated_at;
 
-	private ChargeModel charge;
-
-	public String getLast_transaction_id() {
+	public Long getLast_transaction_id() {
 		return last_transaction_id;
 	}
 
-	public void setLast_transaction_id(String last_transaction_id) {
+	public void setLast_transaction_id(Long last_transaction_id) {
 		this.last_transaction_id = last_transaction_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getTransaction_type() {
@@ -196,25 +204,18 @@ public class LastTransactionModel {
 		this.updated_at = updated_at;
 	}
 
-	public ChargeModel getCharge() {
-		return charge;
-	}
-
-	public void setCharge(ChargeModel charge) {
-		this.charge = charge;
-	}
-
 	public LastTransactionModel() {
 		super();
 	}
 
-	public LastTransactionModel(String last_transaction_id, String transaction_type, String gateway_id, double amount,
-			String status, boolean success, int installments, String statement_descriptor, String acquirer_name,
-			String acquirer_tid, String acquirer_nsu, String acquirer_auth_code, String acquirer_message,
-			String acquirer_return_code, String operation_type, CardModel card, String funding_source, Date created_at,
-			Date updated_at, ChargeModel charge) {
+	public LastTransactionModel(Long last_transaction_id, String id, String transaction_type, String gateway_id,
+			double amount, String status, boolean success, int installments, String statement_descriptor,
+			String acquirer_name, String acquirer_tid, String acquirer_nsu, String acquirer_auth_code,
+			String acquirer_message, String acquirer_return_code, String operation_type, CardModel card,
+			String funding_source, Date created_at, Date updated_at) {
 		super();
 		this.last_transaction_id = last_transaction_id;
+		this.id = id;
 		this.transaction_type = transaction_type;
 		this.gateway_id = gateway_id;
 		this.amount = amount;
@@ -233,7 +234,6 @@ public class LastTransactionModel {
 		this.funding_source = funding_source;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.charge = charge;
 	}
 
 }

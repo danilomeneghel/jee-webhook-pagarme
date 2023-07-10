@@ -5,9 +5,12 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +18,13 @@ import javax.persistence.Table;
 public class CustomerEntity {
 
 	@Id
-	@Column(name = "customer_id")
-	private String customer_id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CUSTOMER_ID")
+	@SequenceGenerator(sequenceName = "SEQ_CUSTOMER_ID", name = "SEQ_CUSTOMER_ID", allocationSize = 1)
+    @Column(name = "customer_id", unique = true, nullable = false)
+    private Long customer_id;
+	
+	@Column(name = "uuid")
+	private String id;
 
 	@Column(name = "name")
 	private String name;
@@ -59,12 +67,20 @@ public class CustomerEntity {
 	@JoinColumn(name = "phones_id")
 	private PhonesEntity phones;
 
-	public String getCustomer_id() {
+	public Long getCustomer_id() {
 		return customer_id;
 	}
 
-	public void setCustomer_id(String customer_id) {
+	public void setCustomer_id(Long customer_id) {
 		this.customer_id = customer_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -175,11 +191,12 @@ public class CustomerEntity {
 		super();
 	}
 
-	public CustomerEntity(String customer_id, String name, String email, String code, String document,
+	public CustomerEntity(Long customer_id, String id, String name, String email, String code, String document,
 			String document_type, String type, String gender, boolean delinquent, AddressEntity address,
 			Date created_at, Date updated_at, Date birthdate, PhonesEntity phones) {
 		super();
 		this.customer_id = customer_id;
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.code = code;

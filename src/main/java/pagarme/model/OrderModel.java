@@ -5,7 +5,9 @@ import java.util.List;
 
 public class OrderModel {
 
-	private String order_id;
+    private Long order_id;
+	
+	private String id;
 
 	private String code;
 
@@ -31,12 +33,20 @@ public class OrderModel {
 
 	private List<CheckoutModel> checkouts;
 
-	public String getOrder_id() {
+	public Long getOrder_id() {
 		return order_id;
 	}
 
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(Long order_id) {
 		this.order_id = order_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCode() {
@@ -139,11 +149,12 @@ public class OrderModel {
 		super();
 	}
 
-	public OrderModel(String order_id, String code, double amount, String currency, boolean closed,
+	public OrderModel(Long order_id, String id, String code, double amount, String currency, boolean closed,
 			List<ItemModel> items, CustomerModel customer, String status, Date created_at, Date updated_at,
 			Date closed_at, List<ChargeModel> charges, List<CheckoutModel> checkouts) {
 		super();
 		this.order_id = order_id;
+		this.id = id;
 		this.code = code;
 		this.amount = amount;
 		this.currency = currency;

@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +20,13 @@ import javax.persistence.Table;
 public class OrderEntity {
 
 	@Id
-	@Column(name = "order_id")
-	private String order_id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ORDER_ID")
+	@SequenceGenerator(sequenceName = "SEQ_ORDER_ID", name = "SEQ_ORDER_ID", allocationSize = 1)
+    @Column(name = "order_id", unique = true, nullable = false)
+    private Long order_id;
+	
+	@Column(name = "uuid")
+	private String id;
 
 	@Column(name = "code")
 	private String code;
@@ -60,12 +68,20 @@ public class OrderEntity {
 	@JoinColumn(name = "order_id")
 	private List<CheckoutEntity> checkouts;
 
-	public String getOrder_id() {
+	public Long getOrder_id() {
 		return order_id;
 	}
 
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(Long order_id) {
 		this.order_id = order_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCode() {
@@ -168,11 +184,12 @@ public class OrderEntity {
 		super();
 	}
 
-	public OrderEntity(String order_id, String code, double amount, String currency, boolean closed,
+	public OrderEntity(Long order_id, String id, String code, double amount, String currency, boolean closed,
 			List<ItemEntity> items, CustomerEntity customer, String status, Date created_at, Date updated_at,
 			Date closed_at, List<ChargeEntity> charges, List<CheckoutEntity> checkouts) {
 		super();
 		this.order_id = order_id;
+		this.id = id;
 		this.code = code;
 		this.amount = amount;
 		this.currency = currency;

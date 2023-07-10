@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class ItemModel {
 
-	private String item_id;
+    private Long item_id;
+	
+	private String id;
 
 	private String type;
 
@@ -24,12 +26,20 @@ public class ItemModel {
 
 	private OrderModel order;
 
-	public String getItem_id() {
+	public Long getItem_id() {
 		return item_id;
 	}
 
-	public void setItem_id(String item_id) {
+	public void setItem_id(Long item_id) {
 		this.item_id = item_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getType() {
@@ -108,10 +118,11 @@ public class ItemModel {
 		super();
 	}
 
-	public ItemModel(String item_id, String type, String description, double amount, int quantity, String status,
-			Date created_at, Date updated_at, String code, OrderModel order) {
+	public ItemModel(Long item_id, String id, String type, String description, double amount, int quantity,
+			String status, Date created_at, Date updated_at, String code, OrderModel order) {
 		super();
 		this.item_id = item_id;
+		this.id = id;
 		this.type = type;
 		this.description = description;
 		this.amount = amount;

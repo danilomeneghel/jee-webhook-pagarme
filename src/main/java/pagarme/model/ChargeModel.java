@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class ChargeModel {
 
-	private String charge_id;
+    private Long charge_id;
+	
+	private String id;
 
 	private String code;
 
@@ -32,12 +34,20 @@ public class ChargeModel {
 
 	private OrderModel order;
 
-	public String getId() {
+	public Long getCharge_id() {
 		return charge_id;
 	}
 
-	public void setId(String charge_id) {
+	public void setCharge_id(Long charge_id) {
 		this.charge_id = charge_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCode() {
@@ -148,11 +158,12 @@ public class ChargeModel {
 		super();
 	}
 
-	public ChargeModel(String charge_id, String code, String gateway_id, double amount, double paid_amount, String status,
-			String currency, String payment_method, Date paid_at, Date created_at, Date updated_at,
+	public ChargeModel(Long charge_id, String id, String code, String gateway_id, double amount, double paid_amount,
+			String status, String currency, String payment_method, Date paid_at, Date created_at, Date updated_at,
 			CustomerModel customer, LastTransactionModel last_transaction, OrderModel order) {
 		super();
 		this.charge_id = charge_id;
+		this.id = id;
 		this.code = code;
 		this.gateway_id = gateway_id;
 		this.amount = amount;

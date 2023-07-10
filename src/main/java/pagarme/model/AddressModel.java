@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class AddressModel {
 
-	private String address_id;
+    private Long address_id;
+	
+	private String id;
 
 	private String line_1;
 
@@ -24,12 +26,20 @@ public class AddressModel {
 
 	private Date updated_at;
 
-	public String getAddress_id() {
+	public Long getAddress_id() {
 		return address_id;
 	}
 
-	public void setAddress_id(String address_id) {
+	public void setAddress_id(Long address_id) {
 		this.address_id = address_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getLine_1() {
@@ -108,10 +118,11 @@ public class AddressModel {
 		super();
 	}
 
-	public AddressModel(String address_id, String line_1, String line_2, String zip_code, String city, String state,
-			String country, String status, Date created_at, Date updated_at) {
+	public AddressModel(Long address_id, String id, String line_1, String line_2, String zip_code, String city,
+			String state, String country, String status, Date created_at, Date updated_at) {
 		super();
 		this.address_id = address_id;
+		this.id = id;
 		this.line_1 = line_1;
 		this.line_2 = line_2;
 		this.zip_code = zip_code;

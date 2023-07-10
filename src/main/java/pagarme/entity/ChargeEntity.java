@@ -5,10 +5,13 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +19,13 @@ import javax.persistence.Table;
 public class ChargeEntity {
 
 	@Id
-	@Column(name = "charge_id")
-	private String charge_id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CHARGE_ID")
+	@SequenceGenerator(sequenceName = "SEQ_CHARGE_ID", name = "SEQ_CHARGE_ID", allocationSize = 1)
+    @Column(name = "charge_id", unique = true, nullable = false)
+    private Long charge_id;
+	
+	@Column(name = "uuid")
+	private String id;
 
 	@Column(name = "code")
 	private String code;
@@ -61,12 +69,20 @@ public class ChargeEntity {
 	@JoinColumn(name = "order_id")
 	private OrderEntity order;
 
-	public String getId() {
+	public Long getCharge_id() {
 		return charge_id;
 	}
 
-	public void setId(String charge_id) {
+	public void setCharge_id(Long charge_id) {
 		this.charge_id = charge_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCode() {
@@ -177,11 +193,12 @@ public class ChargeEntity {
 		super();
 	}
 
-	public ChargeEntity(String charge_id, String code, String gateway_id, double amount, double paid_amount, String status,
-			String currency, String payment_method, Date paid_at, Date created_at, Date updated_at,
+	public ChargeEntity(Long charge_id, String id, String code, String gateway_id, double amount, double paid_amount,
+			String status, String currency, String payment_method, Date paid_at, Date created_at, Date updated_at,
 			CustomerEntity customer, LastTransactionEntity last_transaction, OrderEntity order) {
 		super();
 		this.charge_id = charge_id;
+		this.id = id;
 		this.code = code;
 		this.gateway_id = gateway_id;
 		this.amount = amount;

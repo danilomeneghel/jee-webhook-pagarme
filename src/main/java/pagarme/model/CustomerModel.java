@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class CustomerModel {
 
-	private String customer_id;
+    private Long customer_id;
+	
+	private String id;
 
 	private String name;
 
@@ -32,12 +34,20 @@ public class CustomerModel {
 
 	private PhonesModel phones;
 
-	public String getCustomer_id() {
+	public Long getCustomer_id() {
 		return customer_id;
 	}
 
-	public void setCustomer_id(String customer_id) {
+	public void setCustomer_id(Long customer_id) {
 		this.customer_id = customer_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -148,11 +158,12 @@ public class CustomerModel {
 		super();
 	}
 
-	public CustomerModel(String customer_id, String name, String email, String code, String document,
+	public CustomerModel(Long customer_id, String id, String name, String email, String code, String document,
 			String document_type, String type, String gender, boolean delinquent, AddressModel address,
 			Date created_at, Date updated_at, Date birthdate, PhonesModel phones) {
 		super();
 		this.customer_id = customer_id;
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.code = code;

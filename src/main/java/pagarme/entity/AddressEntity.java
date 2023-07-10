@@ -4,7 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,8 +15,13 @@ import javax.persistence.Table;
 public class AddressEntity {
 
 	@Id
-	@Column(name = "address_id")
-	private String address_id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ADDRESS_ID")
+	@SequenceGenerator(sequenceName = "SEQ_ADDRESS_ID", name = "SEQ_ADDRESS_ID", allocationSize = 1)
+    @Column(name = "address_id", unique = true, nullable = false)
+    private Long address_id;
+	
+	@Column(name = "uuid")
+	private String id;
 
 	@Column(name = "line_1")
 	private String line_1;
@@ -42,12 +50,20 @@ public class AddressEntity {
 	@Column(name = "updated_at")
 	private Date updated_at;
 
-	public String getAddress_id() {
+	public Long getAddress_id() {
 		return address_id;
 	}
 
-	public void setAddress_id(String address_id) {
+	public void setAddress_id(Long address_id) {
 		this.address_id = address_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getLine_1() {
@@ -121,15 +137,16 @@ public class AddressEntity {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
-	
+
 	public AddressEntity() {
 		super();
 	}
 
-	public AddressEntity(String address_id, String line_1, String line_2, String zip_code, String city, String state,
-			String country, String status, Date created_at, Date updated_at) {
+	public AddressEntity(Long address_id, String id, String line_1, String line_2, String zip_code, String city,
+			String state, String country, String status, Date created_at, Date updated_at) {
 		super();
 		this.address_id = address_id;
+		this.id = id;
 		this.line_1 = line_1;
 		this.line_2 = line_2;
 		this.zip_code = zip_code;

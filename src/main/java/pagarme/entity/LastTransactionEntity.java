@@ -5,10 +5,12 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +18,13 @@ import javax.persistence.Table;
 public class LastTransactionEntity {
 
 	@Id
-	@Column(name = "last_transaction_id")
-	private String last_transaction_id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_LAST_TRANSACTION_ID")
+	@SequenceGenerator(sequenceName = "SEQ_LAST_TRANSACTION_ID", name = "SEQ_LAST_TRANSACTION_ID", allocationSize = 1)
+    @Column(name = "last_transaction_id", unique = true, nullable = false)
+    private Long last_transaction_id;
+	
+	@Column(name = "uuid")
+	private String id;
 
 	@Column(name = "transaction_type")
 	private String transaction_type;
@@ -74,31 +81,20 @@ public class LastTransactionEntity {
 	@Column(name = "updated_at")
 	private Date updated_at;
 
-	/*@Embedded
-	@Column(name = "gateway_response")
-	private GatewayResponseEntity gateway_response;
-
-	@Embedded
-	@Column(name = "antifraud_response")
-	private AntifraudResponseEntity antifraud_response;
-
-	@ElementCollection
-	@CollectionTable(name = "last_transaction_metadata", joinColumns
-	= @JoinColumn(name = "last_transaction_id"))
-	@MapKeyColumn(name = "metadata_key")
-	@Column(name = "metadata_value")
-	private Map<String, String> metadata;*/
-
-	@ManyToOne
-	@JoinColumn(name = "charge_id")
-	private ChargeEntity charge;
-
-	public String getLast_transaction_id() {
+	public Long getLast_transaction_id() {
 		return last_transaction_id;
 	}
 
-	public void setLast_transaction_id(String last_transaction_id) {
+	public void setLast_transaction_id(Long last_transaction_id) {
 		this.last_transaction_id = last_transaction_id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getTransaction_type() {
@@ -245,25 +241,18 @@ public class LastTransactionEntity {
 		this.updated_at = updated_at;
 	}
 
-	public ChargeEntity getCharge() {
-		return charge;
-	}
-
-	public void setCharge(ChargeEntity charge) {
-		this.charge = charge;
-	}
-
 	public LastTransactionEntity() {
 		super();
 	}
 
-	public LastTransactionEntity(String last_transaction_id, String transaction_type, String gateway_id, double amount,
-			String status, boolean success, int installments, String statement_descriptor, String acquirer_name,
-			String acquirer_tid, String acquirer_nsu, String acquirer_auth_code, String acquirer_message,
-			String acquirer_return_code, String operation_type, CardEntity card, String funding_source, Date created_at,
-			Date updated_at, ChargeEntity charge) {
+	public LastTransactionEntity(Long last_transaction_id, String id, String transaction_type, String gateway_id,
+			double amount, String status, boolean success, int installments, String statement_descriptor,
+			String acquirer_name, String acquirer_tid, String acquirer_nsu, String acquirer_auth_code,
+			String acquirer_message, String acquirer_return_code, String operation_type, CardEntity card,
+			String funding_source, Date created_at, Date updated_at) {
 		super();
 		this.last_transaction_id = last_transaction_id;
+		this.id = id;
 		this.transaction_type = transaction_type;
 		this.gateway_id = gateway_id;
 		this.amount = amount;
@@ -282,7 +271,6 @@ public class LastTransactionEntity {
 		this.funding_source = funding_source;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-		this.charge = charge;
 	}
 
 }
