@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "d7b6c1b4-dd0c-441c-81ca-f9d68a3ec7af",
+		"name": "App Webhook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"cus_QmNq2vntVBUmoqP1\",\n    \"name\": \"Bruna\",\n    \"email\": \"bruna@aaaaa.com\",\n    \"code\": \"11111\",\n    \"document\": \"76376981062\",\n    \"document_type\": \"cpf\",\n    \"type\": \"individual\",\n    \"gender\": \"female\",\n    \"delinquent\": false,\n    \"address\": {\n      \"id\": \"addr_gWzqOJdf3xUJNG31\",\n      \"line_1\": \"Rua xxxxxx\",\n      \"line_2\": \"yyyyyyyy\",\n      \"zip_code\": \"90040001\",\n      \"city\": \"Porto Alegre\",\n      \"state\": \"RS\",\n      \"country\": \"BR\",\n      \"status\": \"active\",\n      \"created_at\": \"2023-06-27T13:21:41Z\",\n      \"updated_at\": \"2023-06-27T13:21:41Z\"\n    },\n    \"created_at\": \"2023-06-16T22:55:56Z\",\n    \"updated_at\": \"2023-06-27T13:21:41Z\",\n    \"birthdate\": \"1990-01-01T00:00:00Z\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"55\",\n        \"number\": \"999999999\",\n        \"area_code\": \"51\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"55\",\n        \"number\": \"88888888\",\n        \"area_code\": \"51\"\n      }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/webhook-pagarme/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"webhook-pagarme",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/webhook-pagarme/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"webhook-pagarme",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
